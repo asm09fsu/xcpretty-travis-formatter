@@ -1,5 +1,5 @@
 
-class TravisFormatter < XCPretty::Simple
+class TravisFormatter < XCPretty::RSpec
 
   def initialize (use_unicode, colorize)
     super
@@ -85,13 +85,13 @@ class TravisFormatter < XCPretty::Simple
   def format_error(message);                                                @errors.push(super); ""; end
   def format_file_missing_error(error, file_path);                          @errors.push(super); ""; end
 #  def format_ld_warning(message);                                           @warnings.push(super); ""; end
-  def format_ld_warning(message);                                           super; end
-  def format_undefined_symbols(message, symbol, reference);                 @warnings.push(super); ""; end
-  def format_duplicate_symbols(message, file_paths);                        @warnings.push(super); ""; end
+#  def format_ld_warning(message);                                           super; end
+#  def format_undefined_symbols(message, symbol, reference);                 @warnings.push(super); ""; end
+#  def format_duplicate_symbols(message, file_paths);                        @warnings.push(super); ""; end
 #  def format_warning(message);                                              @warnings.push(super); ""; end
-  def format_warning(message);                                              super; end
+#  def format_warning(message);                                              super; end
 #  def format_compile_warning(file_name, file_path, reason, line, cursor);   @warnings.push(super); ""; end
-  def format_compile_warning(file_name, file_path, reason, line, cursor);   super; end
+#  def format_compile_warning(file_name, file_path, reason, line, cursor);   super; end
 
 end
 
