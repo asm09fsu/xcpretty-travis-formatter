@@ -1,5 +1,5 @@
 
-class TravisFormatter < XCPretty::RSpec
+class TravisFormatter < XCPretty::Simple
 
   def initialize (use_unicode, colorize)
     super
@@ -13,11 +13,11 @@ class TravisFormatter < XCPretty::RSpec
       close_fold()
 
       # Print out any warnings.
-      # if !@warnings.compact.empty?
-        # open_fold("Warnings")
-        # STDOUT.puts @warnings.compact.join("\n")
-        # close_fold()
-      # end
+      if !@warnings.compact.empty?
+        open_fold("Warnings")
+        STDOUT.puts @warnings.compact.join("\n")
+        close_fold()
+      end
 
       # Print out any errors.
       if !@errors.compact.empty?
@@ -84,7 +84,7 @@ class TravisFormatter < XCPretty::RSpec
   def format_compile_error(file_name, file_path, reason, line, cursor);     @errors.push(super); ""; end
   def format_error(message);                                                @errors.push(super); ""; end
   def format_file_missing_error(error, file_path);                          @errors.push(super); ""; end
-  
+
   def format_ld_warning(message);                                           EMPTY; end
   def format_undefined_symbols(message, symbol, reference);                 EMPTY; end
   def format_duplicate_symbols(message, file_paths);                        EMPTY; end
